@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
 function App() {
+  const [array, setArray] = React.useState(['thing 1', 'thing 2'])
+
+  const addItem = () =>{
+    setArray((prevArrray) =>{
+      return [...prevArrray, `thing ${prevArrray.length + 1}`]
+
+    })
+  }
+  const element = array.map((item)=>{
+    return <div className="item">{item}</div>
+
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className='button' onClick={addItem}>add</button>
+      {element}
+
+      
     </div>
   );
 }
